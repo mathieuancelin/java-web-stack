@@ -27,6 +27,7 @@ public class Async {
                             }
                         },
                         error -> {
+                            error.printStackTrace();
                             ctx.getResponse()
                                     .contentType("text/plain")
                                     .status(500)
@@ -34,6 +35,7 @@ public class Async {
                         }
                 );
             } catch (Exception e) {
+                e.printStackTrace();
                 ctx.getResponse()
                         .contentType("text/plain")
                         .status(500)
