@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   output: {
     path: '../src/main/resources/public',
-    publicPath: '/',
+    publicPath: '/assets/',
     filename: 'app.js',
     library: 'App',
     libraryTarget: 'umd'

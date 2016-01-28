@@ -8,10 +8,10 @@ export const BikeShelter = React.createClass({
     },
     render() {
         return (
-            <li>
+            <div style={{ display: 'flex' }}>
                 <img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/magic-marker-icons-food-beverage/115446-magic-marker-icon-food-beverage-drink-bottle1.png" style={{ width: 20, height: 20 }} />
-                <p>{this.props.shelter.address}</p>
-            </li>
+                <span style={{ marginRight: 10 }}>{this.props.shelter.address}</span>
+            </div>
         );
     }
 });

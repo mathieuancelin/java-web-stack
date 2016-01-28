@@ -8,10 +8,10 @@ export const GlassContainer = React.createClass({
     },
     render() {
         return (
-            <li>
+            <div style={{ display: 'flex' }}>
                 <img src="http://icons.iconarchive.com/icons/icons8/ios7/256/Transport-Bicycle-icon.png" style={{ width: 20, height: 20 }} />
-                <p>{this.props.container.address}</p>
-            </li>
+                <span style={{ marginRight: 10 }}>{this.props.container.address}</span>
+            </div>
         );
     }
 });

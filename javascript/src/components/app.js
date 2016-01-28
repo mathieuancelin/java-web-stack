@@ -11,7 +11,7 @@ export const App = React.createClass({
         };
     },
     componentDidMount() {
-        fetch('http://localhost:8887/service')
+        fetch('http://localhost:8886/proxy?url=http://localhost:8887/service')
             .then(r => r.json())
             .then(data => this.setState({ shelters: data.bikerShelters, containers: data.glassContainers }))
     },
@@ -22,13 +22,13 @@ export const App = React.createClass({
         return (
             <div>
                 <h3>Bike Shelters</h3>
-                <ul>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     {this.state.shelters.map(s => <BikeShelter shelter={s} show={this.show} />)}
-                </ul>
+                </div>
                 <h3>Glass Containers</h3>
-                <ul>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     {this.state.containers.map(c => <GlassContainer container={c} show={this.show} />)}
-                </ul>
+                </div>
             </div>
         );
     }
