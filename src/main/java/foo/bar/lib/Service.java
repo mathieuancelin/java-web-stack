@@ -23,17 +23,43 @@ public abstract class Service {
     }
 
     public final Logger logger;
+    private final String host;
+    private final int port;
+    private final String configPath;
+
+    public Service(String host, int port, String configPath) {
+        this.logger = LoggerFactory.getLogger(getClass());
+        this.host = host;
+        this.port = port;
+        this.configPath = configPath;
+    }
+
+    public Service(String host, int port) {
+        this.logger = LoggerFactory.getLogger(getClass());
+        this.host = host;
+        this.port = port;
+        this.configPath = "application";
+    }
+
+    public Service(int port) {
+        this.logger = LoggerFactory.getLogger(getClass());
+        this.host = "0.0.0.0";
+        this.port = port;
+        this.configPath = "application";
+    }
 
     public Service() {
         this.logger = LoggerFactory.getLogger(getClass());
+        this.host = "0.0.0.0";
+        this.port = 9000;
+        this.configPath = "application";
     }
 
-    public String getHost() {
-        return "0.0.0.0";
-    }
-
-    public int getPort() {
-        return 9000;
+    public Service(String configPath) {
+        this.logger = LoggerFactory.getLogger(getClass());
+        this.host = "0.0.0.0";
+        this.port = 9000;
+        this.configPath = configPath;
     }
 
     public abstract Chain routes(Chain chain);
@@ -45,14 +71,18 @@ public abstract class Service {
             Path base = BaseDir.find("public");
             ServerConfig config = ServerConfig
                     .embedded()
-                    .port(getPort())
+                    .port(port)
                     .baseDir(base)
-                    .publicAddress(uri(getHost()))
+                    .development(Config.config().mode().equalsIgnoreCase("dev"))
+                    .publicAddress(uri(host))
                     .threads(Runtime.getRuntime().availableProcessors() + 1)
                     .build();
             return RatpackServer.start(server -> server
                     .serverConfig(config)
-                    .registryOf(this::registry)
+                    .registryOf(r -> {
+                        r.add(Config.class, new Config(configPath));
+                        this.registry(r);
+                    })
                     .handlers(this::routes)
             );
         } catch (Exception e) {
