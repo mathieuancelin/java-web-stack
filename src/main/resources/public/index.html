@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webstack Test</title>
+</head>
+<body>
+<div id="app">Here is the JS stack ;-)</div>
+<script src="https://jspm.io/system@0.19.16.js"></script>
+<script>
+    System.config({
+        transpiler: 'babel',
+        babelOptions: {
+            "stage": 0,
+            "loose": "all",
+            "optional": "runtime"
+        }
+    });
+    System.import('./index.js');
+</script>
+</body>
+</html>
