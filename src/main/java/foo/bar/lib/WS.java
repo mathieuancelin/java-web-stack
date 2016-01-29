@@ -20,25 +20,21 @@ public class WS {
     }
     public static Observable<Response> asyncCall(Request request) {
         return Observable.create(subscriber -> {
-            try {
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        System.out.println("onFailure");
-                        e.printStackTrace();
-                        subscriber.onError(e);
-                    }
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    System.out.println("onFailure");
+                    e.printStackTrace();
+                    subscriber.onError(e);
+                }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        System.out.println("onResponse");
-                        subscriber.onNext(response);
-                        subscriber.onCompleted();
-                    }
-                });
-            } catch (Exception e) {
-                subscriber.onError(e);
-            }
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    System.out.println("onResponse");
+                    subscriber.onNext(response);
+                    subscriber.onCompleted();
+                }
+            });
         });
     }
 }

@@ -19,8 +19,7 @@ public class Service2 extends Service {
     @Override
     public Chain routes(Chain chain) {
         return chain
-            .get("bike-shelters", async(this::service))
-            .get("async-ws", async(this::asyncWs));
+            .get("bike-shelters", async(this::service));
     }
 
     public Observable<Result> service(Context ctx) {
@@ -28,12 +27,5 @@ public class Service2 extends Service {
             .url("http://open-data-poitiers.herokuapp.com/api/v2/bike-shelters/all")
             .build())
             .map(response -> Result.ok(response, "application/json"));
-    }
-
-    public Observable<Result> asyncWs(Context ctx) {
-        return WS.asyncCall(new Request.Builder()
-                .url("http://localhost:8888/non-blocking")
-                .build())
-                .map(response -> Result.ok(response, "text/plain"));
     }
 }
