@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "main": "src/main.js",
+  "main": "app/main.js",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint app",
     "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
     "bundle": "NODE_ENV=production webpack -p --colors --progress",
     "build": "npm run bundle"

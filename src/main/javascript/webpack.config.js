@@ -34,7 +34,7 @@ module.exports = {
     port: '8885'
   },
   entry: [
-    './src/main.js'
+    './app/main.js'
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', 'es6']
