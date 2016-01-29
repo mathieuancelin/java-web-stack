@@ -11,8 +11,6 @@ public class Main {
         new Service2().run(); // un service qui récupère ses données via un webservice hébergé
         new ServiceAggregator().run(); // un service qui va aggérer et traiter les deux services précédants
         new StaticService().run(); // un service qui sert l'application JS
-
-        new Tests().run(); // quelques tests sur des bugs
     }
 }
 
