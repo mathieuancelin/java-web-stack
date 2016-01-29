@@ -34,4 +34,4 @@ open http://localhost:8886/
 
 # Dev
 
-instead of `npm run build` do `npm start` and then open `http://localhost:8886/dev.html`
+instead of `npm run build` do `npm start` and then open `http://localhost:8886/dev`

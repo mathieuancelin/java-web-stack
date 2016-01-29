@@ -11,7 +11,7 @@ export const App = React.createClass({
         };
     },
     componentDidMount() {
-        fetch('http://localhost:8886/proxy?url=http://localhost:8887/service')
+        fetch('/proxy?url=http://localhost:8887/service')
             .then(r => r.json())
             .then(data => this.setState({ shelters: data.bikerShelters, containers: data.glassContainers }))
     },
