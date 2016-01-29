@@ -19,7 +19,30 @@ public class Service1 extends Service {
     @Override
     public Chain routes(Chain chain) {
         return chain
-            .get("glass-containers", async(this::service));
+            .get("glass-containers", async(this::service))
+            .get("non-blocking", ctx -> ctx.render("time: " + System.currentTimeMillis()))
+            .get("rx-blocking", async(ctx -> {
+                logger.info("creating");
+                Observable<Result> obs = Observable.create(sub -> {
+                    logger.info("Will wait 5 with obs");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (Exception e) {
+                        sub.onError(e);
+                    }
+                    logger.info("Wait done with obs");
+                    sub.onNext(Result.ok("done"));
+                    sub.onCompleted();
+                });
+                logger.info("creating done");
+                return obs;
+            }))
+            .get("blocking", ctx -> {
+                logger.info("Will wait 5");
+                Thread.sleep(5000);
+                logger.info("Wait done");
+                ctx.render("done");
+            });
     }
 
     public Observable<Result> service(Context ctx) {
