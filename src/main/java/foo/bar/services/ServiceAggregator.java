@@ -17,12 +17,13 @@ public class ServiceAggregator extends Service {
     @Override
     public Chain routes(Chain chain) {
         return chain
-            .get("service", async(this::service))
-            .get("mode", ctx -> {
+            .get("service", async(this::service)) // exposé sur l'url http://0.0.0.0:8887/service
+            .get("mode", ctx -> { // expose le mode de l'application sur http://0.0.0.0:8887/mode
                 ctx.render(Config.config().mode());
             });
     }
 
+    // Le service appele deux webservices exposés et les aggrège dans un seul objet json
     public Observable<Result> service(Context ctx) {
 
         Observable<Result> call1 = WS.call(new Request.Builder()

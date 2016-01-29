@@ -3,9 +3,9 @@
 Template project for an async web stack using
 
 * Ratpack as HTTP stack
-* RxJava as async utils everywhere
-* OK HTTP as HTTP client
-* JSR 353 for JSON handling
+* RxJava as async programming model everywhere
+* OKHTTP as HTTP client
+* JSR 353 for JSON processing
 * Typesafe config for config
 
 

@@ -19,9 +19,10 @@ public class Service2 extends Service {
     @Override
     public Chain routes(Chain chain) {
         return chain
-            .get("bike-shelters", async(this::service));
+            .get("bike-shelters", async(this::service));  // exposé sur l'url http://0.0.0.0:8889/bike-shelters
     }
 
+    // Le service appele juste un service hebergé en tant que source de données
     public Observable<Result> service(Context ctx) {
         return WS.call(new Request.Builder()
             .url("http://open-data-poitiers.herokuapp.com/api/v2/bike-shelters/all")
