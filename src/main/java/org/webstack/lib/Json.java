@@ -1,4 +1,4 @@
-package foo.bar.lib;
+package org.webstack.lib;
 
 import javax.json.*;
 import java.io.StringReader;

@@ -1,4 +1,4 @@
-package foo.bar.lib;
+package org.webstack.lib;
 
 import com.google.common.base.Joiner;
 import io.netty.handler.codec.http.cookie.Cookie;

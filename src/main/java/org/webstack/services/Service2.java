@@ -1,14 +1,13 @@
-package foo.bar.services;
+package org.webstack.services;
 
-import foo.bar.lib.Result;
-import foo.bar.lib.Service;
-import foo.bar.lib.WS;
+import org.webstack.lib.Result;
+import org.webstack.lib.Service;
+import org.webstack.lib.WS;
 import okhttp3.Request;
+import org.webstack.lib.Async;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
 import rx.Observable;
-
-import static foo.bar.lib.Async.async;
 
 public class Service2 extends Service {
 
@@ -19,7 +18,7 @@ public class Service2 extends Service {
     @Override
     public Chain routes(Chain chain) {
         return chain
-            .get("bike-shelters", async(this::service));  // exposé sur l'url http://0.0.0.0:8889/bike-shelters
+            .get("bike-shelters", Async.async(this::service));  // exposé sur l'url http://0.0.0.0:8889/bike-shelters
     }
 
     // Le service appele juste un service hebergé en tant que source de données

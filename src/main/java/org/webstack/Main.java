@@ -1,6 +1,9 @@
-package foo.bar;
+package org.webstack;
 
-import foo.bar.services.*;
+import org.webstack.services.Service1;
+import org.webstack.services.Service2;
+import org.webstack.services.ServiceAggregator;
+import org.webstack.services.StaticService;
 
 public class Main {
 

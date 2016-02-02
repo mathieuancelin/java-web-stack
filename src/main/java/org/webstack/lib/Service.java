@@ -1,4 +1,4 @@
-package foo.bar.lib;
+package org.webstack.lib;
 
 import com.google.common.base.Throwables;
 import org.slf4j.Logger;

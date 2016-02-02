@@ -1,4 +1,4 @@
-package foo.bar.lib;
+package org.webstack.lib;
 
 import com.typesafe.config.ConfigFactory;
 

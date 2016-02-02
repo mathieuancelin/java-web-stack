@@ -1,21 +1,15 @@
-package foo.bar.lib;
+package org.webstack.lib;
 
 import com.google.common.base.Joiner;
-import ratpack.exec.Promise;
 import ratpack.handling.Context;
 import ratpack.http.Response;
 import ratpack.rx.RxRatpack;
 import rx.Observable;
 
 import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.function.Function;
 
 public class Async {
-
-    public static final ExecutorService EXECUTOR_SERVICE =
-        Executors.newFixedThreadPool(20);
 
     static {
         RxRatpack.initialize();

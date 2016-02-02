@@ -23,7 +23,7 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Services'
         attributes 'Implementation-Version': version
-        attributes 'Main-Class': 'foo.bar.Main'
+        attributes 'Main-Class': 'org.webstack.Main'
     }
 }
 

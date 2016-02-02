@@ -1,12 +1,12 @@
-package foo.bar.services;
+package org.webstack.services;
 
-import foo.bar.lib.*;
 import okhttp3.Request;
+import org.webstack.lib.*;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
 import rx.Observable;
 
-import static foo.bar.lib.Async.async;
+import static org.webstack.lib.Async.async;
 
 public class ServiceAggregator extends Service {
 

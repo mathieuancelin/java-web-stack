@@ -1,14 +1,14 @@
-package foo.bar.services;
+package org.webstack.services;
 
-import foo.bar.lib.Result;
-import foo.bar.lib.Service;
-import foo.bar.lib.WS;
+import org.webstack.lib.Result;
+import org.webstack.lib.Service;
+import org.webstack.lib.WS;
 import okhttp3.Request;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
 import rx.Observable;
 
-import static foo.bar.lib.Async.async;
+import static org.webstack.lib.Async.async;
 
 public class Service1 extends Service {
 

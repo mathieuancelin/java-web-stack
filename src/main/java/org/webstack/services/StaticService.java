@@ -1,17 +1,16 @@
-package foo.bar.services;
+package org.webstack.services;
 
-import com.google.common.base.Throwables;
-import foo.bar.lib.Config;
-import foo.bar.lib.Result;
-import foo.bar.lib.Service;
-import foo.bar.lib.WS;
+import org.webstack.lib.Config;
+import org.webstack.lib.Result;
+import org.webstack.lib.Service;
+import org.webstack.lib.WS;
 import okhttp3.Request;
+import org.webstack.lib.*;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
 import rx.Observable;
 
-import static foo.bar.lib.Async.async;
-import static foo.bar.lib.Utils.unsafe;
+import static org.webstack.lib.Async.async;
 
 public class StaticService extends Service {
 
@@ -33,7 +32,7 @@ public class StaticService extends Service {
         if (Config.config().mode().equalsIgnoreCase("dev")) { // si en mode dev, on expose une page utilisant le webpack-dev-server
             chain.get("dev", async(this::dev));
         }
-        unsafe(() ->
+        Utils.unsafe(() ->
             chain.files(f -> f.dir("public").indexFiles("index.html"))); // exposition du dossier resources/public comme dossier static web
         return chain;
     }
