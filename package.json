@@ -1,14 +1,16 @@
 {
-  "name": "app",
+  "name": "webstack-test-javascript",
   "version": "1.0.0",
-  "description": "",
+  "description": "Javascript app for the webstack-tests",
   "private": true,
-  "main": "app/main.js",
+  "main": "src/main/javascript/main.js",
   "scripts": {
     "lint": "eslint app",
     "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
     "bundle": "NODE_ENV=production webpack -p --colors --progress",
-    "build": "npm run bundle"
+    "build": "npm run bundle",
+    "dist-all": "npm run build && ./gradlew clean fatjar",
+    "run-all": "npm run dist-all && java -jar ./build/libs/webstack-test-all-1.0.0.jar"
   },
   "author": "Mathieu ANCELIN",
   "license": "MIT",

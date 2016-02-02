@@ -4,7 +4,7 @@ var plugins = [
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
-    '__DEV__': process.env.NODE_ENV === 'production' ? false : true,
+    '__DEV__': process.env.NODE_ENV === 'production',
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'dev')
     }
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   output: {
-    path: '../resources/public',
+    path: './src/main/resources/public',
     publicPath: '/assets/',
     filename: 'app.js',
     library: 'App',
@@ -34,7 +34,7 @@ module.exports = {
     port: '8885'
   },
   entry: [
-    './app/main.js'
+    './src/main/javascript/main.js'
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', 'es6']
