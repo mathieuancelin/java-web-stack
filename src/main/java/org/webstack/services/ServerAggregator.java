@@ -10,9 +10,9 @@ import rx.Observable;
 
 import static org.webstack.lib.Async.async;
 
-public class ServiceAggregator extends Service {
+public class ServerAggregator extends Server {
 
-    public ServiceAggregator() {
+    public ServerAggregator() {
         super(8887);
     }
 

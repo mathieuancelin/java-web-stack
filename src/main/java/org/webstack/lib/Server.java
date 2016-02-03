@@ -12,7 +12,7 @@ import ratpack.server.ServerConfig;
 import java.net.URI;
 import java.nio.file.Path;
 
-public abstract class Service {
+public abstract class Server {
 
     private static URI uri(String uri) {
         try {
@@ -27,35 +27,35 @@ public abstract class Service {
     private final int port;
     private final String configPath;
 
-    public Service(String host, int port, String configPath) {
+    public Server(String host, int port, String configPath) {
         this.logger = LoggerFactory.getLogger(getClass());
         this.host = host;
         this.port = port;
         this.configPath = configPath;
     }
 
-    public Service(String host, int port) {
+    public Server(String host, int port) {
         this.logger = LoggerFactory.getLogger(getClass());
         this.host = host;
         this.port = port;
         this.configPath = "application";
     }
 
-    public Service(int port) {
+    public Server(int port) {
         this.logger = LoggerFactory.getLogger(getClass());
         this.host = "0.0.0.0";
         this.port = port;
         this.configPath = "application";
     }
 
-    public Service() {
+    public Server() {
         this.logger = LoggerFactory.getLogger(getClass());
         this.host = "0.0.0.0";
         this.port = 9000;
         this.configPath = "application";
     }
 
-    public Service(String configPath) {
+    public Server(String configPath) {
         this.logger = LoggerFactory.getLogger(getClass());
         this.host = "0.0.0.0";
         this.port = 9000;

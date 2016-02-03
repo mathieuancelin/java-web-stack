@@ -2,7 +2,7 @@ package org.webstack.services;
 
 import org.webstack.lib.Config;
 import org.webstack.lib.Result;
-import org.webstack.lib.Service;
+import org.webstack.lib.Server;
 import org.webstack.lib.WS;
 import okhttp3.Request;
 import org.webstack.lib.*;
@@ -12,9 +12,9 @@ import rx.Observable;
 
 import static org.webstack.lib.Async.async;
 
-public class StaticService extends Service {
+public class StaticServer extends Server {
 
-    public StaticService() {
+    public StaticServer() {
         super(8886);
     }
 
