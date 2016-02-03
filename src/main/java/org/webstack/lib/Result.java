@@ -3,9 +3,10 @@ package org.webstack.lib;
 import com.google.common.base.Joiner;
 import io.netty.handler.codec.http.cookie.Cookie;
 import okhttp3.Response;
+import org.reactivecouchbase.json.JsValue;
+import org.reactivecouchbase.json.Json;
 import rx.Observable;
 
-import javax.json.JsonStructure;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Result {
         return r;
     }
 
-    public static Result status(int status, JsonStructure content) {
+    public static Result status(int status, JsValue content) {
         return status(status, Json.stringify(content), "application/json");
     }
 
@@ -60,7 +61,7 @@ public class Result {
         return status(200, "", "text/plain");
     }
 
-    public static Result ok(JsonStructure content) {
+    public static Result ok(JsValue content) {
         return status(200, Json.stringify(content), "application/json");
     }
 
@@ -68,7 +69,7 @@ public class Result {
         return status(500, content, "text/plain");
     }
 
-    public static Result error(JsonStructure content) {
+    public static Result error(JsValue content) {
         return status(500, Json.stringify(content), "application/json");
     }
 
@@ -76,7 +77,7 @@ public class Result {
         return status(404, content, null);
     }
 
-    public static Result notFound(JsonStructure content) {
+    public static Result notFound(JsValue content) {
         return status(404, Json.stringify(content), "application/json");
     }
 

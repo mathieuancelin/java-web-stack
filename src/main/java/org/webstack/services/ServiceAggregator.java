@@ -1,6 +1,8 @@
 package org.webstack.services;
 
 import okhttp3.Request;
+import org.reactivecouchbase.json.Json;
+import org.reactivecouchbase.json.Syntax;
 import org.webstack.lib.*;
 import ratpack.handling.Chain;
 import ratpack.handling.Context;
@@ -38,8 +40,8 @@ public class ServiceAggregator extends Service {
 
         return Observable.combineLatest(call1, call2, (res1, res2) -> Result.ok(
             Json.obj(
-                Json.pair("glassContainers", Json.parse(res1.body)),
-                Json.pair("bikerShelters", Json.parse(res2.body))
+                Syntax.$("glassContainers", Json.parse(res1.body)),
+                Syntax.$("bikerShelters", Json.parse(res2.body))
             )
         ));
     }
