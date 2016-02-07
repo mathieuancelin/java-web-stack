@@ -5,7 +5,7 @@ Template project for an async web stack using
 * Ratpack as HTTP stack
 * RxJava as async programming model everywhere
 * OKHTTP as HTTP client
-* JSR 353 for JSON processing
+* ReactiveCouchbase JSON lib
 * Typesafe config for config
 
 
@@ -22,13 +22,13 @@ npm run build
 then build the services
 
 ```
-./gradlew clean fatjar
+./gradlew clean shadowJar
 ```
 
 and run it
 
 ```
-java -jar ./build/libs/webstack-test-all-1.0.0.jar
+java -jar ./build/libs/webstack-test-1.0.0-all.jar
 open http://localhost:8886/
 ```
 

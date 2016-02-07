@@ -9,8 +9,8 @@
     "start": "NODE_ENV=dev webpack-dev-server -d --colors --hot --inline --progress --port 8080",
     "bundle": "NODE_ENV=production webpack -p --colors --progress",
     "build": "npm run bundle",
-    "dist-all": "npm run build && ./gradlew clean fatjar",
-    "run-all": "npm run dist-all && java -jar ./build/libs/webstack-test-all-1.0.0.jar"
+    "dist-all": "npm run build && ./gradlew clean shadowJar",
+    "run-all": "npm run dist-all && java -jar ./build/libs/webstack-test-1.0.0-all.jar"
   },
   "author": "Mathieu ANCELIN",
   "license": "MIT",
