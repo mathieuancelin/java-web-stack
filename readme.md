@@ -29,6 +29,8 @@ then build the services
 
 ```
 ./gradlew clean shadowJar
+# or
+./gradlew clean distZip
 ```
 
 and run it
@@ -37,6 +39,10 @@ and run it
 java -jar ./build/libs/webstack-test-1.0.0-all.jar
 # or
 ./gradlew run
+# or
+unzip ./build/distributions/webstack-test-1.0.0 ./build/distributions/webstack-test-1.0.0.zip
+sh ./webstack-test-1.0.0/bin/webstack-test
+# then
 open http://localhost:8886/
 ```
 
