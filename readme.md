@@ -5,9 +5,15 @@ Template project for an async web stack using
 * Ratpack as HTTP stack
 * RxJava as async programming model everywhere
 * OKHTTP as HTTP client
-* ReactiveCouchbase JSON lib
+* ReactiveCouchbase util libs (common, json, validation, concurrent)
 * Typesafe config for config
 
+on the JS side
+
+* React
+* Webpack
+* Babel
+* ESlint
 
 ## Run
 
@@ -29,6 +35,8 @@ and run it
 
 ```
 java -jar ./build/libs/webstack-test-1.0.0-all.jar
+# or
+./gradlew run
 open http://localhost:8886/
 ```
 

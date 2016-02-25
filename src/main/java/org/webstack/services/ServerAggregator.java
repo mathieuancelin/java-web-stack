@@ -1,6 +1,7 @@
 package org.webstack.services;
 
 import okhttp3.Request;
+import org.reactivecouchbase.json.JsValue;
 import org.reactivecouchbase.json.Json;
 import org.reactivecouchbase.json.Syntax;
 import org.webstack.lib.*;
@@ -9,6 +10,7 @@ import ratpack.handling.Context;
 import rx.Observable;
 
 import static org.webstack.lib.Async.async;
+import static org.webstack.lib.Utils.unsafe;
 
 public class ServerAggregator extends Server {
 
@@ -28,20 +30,20 @@ public class ServerAggregator extends Server {
     // Le service appele deux webservices exposés et les aggrège dans un seul objet json
     public Observable<Result> service(Context ctx) {
 
-        Observable<Result> call1 = WS.call(new Request.Builder()
+        Observable<JsValue> call1 = WS.call(new Request.Builder()
             .url("http://localhost:8888/glass-containers")
             .build())
-            .map(response -> Result.ok(response, "application/json"));
+            .map(response -> Json.parse(unsafe(() -> response.body().string())));
 
-        Observable<Result> call2 = WS.call(new Request.Builder()
+        Observable<JsValue> call2 = WS.call(new Request.Builder()
             .url("http://localhost:8889/bike-shelters")
             .build())
-            .map(response -> Result.ok(response,  "application/json"));
+                .map(response -> Json.parse(unsafe(() -> response.body().string())));
 
         return Observable.combineLatest(call1, call2, (res1, res2) -> Result.ok(
             Json.obj(
-                Syntax.$("glassContainers", Json.parse(res1.body)),
-                Syntax.$("bikerShelters", Json.parse(res2.body))
+                Syntax.$("glassContainers", res1),
+                Syntax.$("bikerShelters", res2)
             )
         ));
     }

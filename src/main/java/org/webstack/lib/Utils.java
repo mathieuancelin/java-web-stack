@@ -1,16 +1,16 @@
 package org.webstack.lib;
 
-import com.google.common.base.Throwables;
+import org.reactivecouchbase.common.Throwables;
 
 public class Utils {
 
-    public interface Function0<T> {
-        T apply() throws Exception;
+    public interface UnsafeSupplier<T> {
+        T get() throws Exception;
     }
 
-    public static <T> T unsafe(Function0<T> f) {
+    public static <T> T unsafe(UnsafeSupplier<T> f) {
         try {
-            return f.apply();
+            return f.get();
         } catch (Exception e) {
             throw Throwables.propagate(e);
         }

@@ -11,7 +11,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-        url 'https://raw.github.com/ReactiveCouchbase/json-lib/master/repository/snapshots/'
+        url 'https://raw.github.com/ReactiveCouchbase/repository/master/snapshots/'
     }
 }
 
@@ -33,11 +33,14 @@ shadowJar {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.13'
     compile 'ch.qos.logback:logback-classic:1.1.3'
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
-    compile 'io.reactivex:rxjava:1.1.0'
-    compile 'io.ratpack:ratpack-core:1.1.1'
-    compile 'io.ratpack:ratpack-rx:1.1.1'
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    compile 'io.reactivex:rxjava:1.1.1'
+    compile 'io.ratpack:ratpack-core:1.2.0'
+    compile 'io.ratpack:ratpack-rx:1.2.0'
+    compile 'org.reactivecouchbase:common-lib:1.0-SNAPSHOT'
     compile 'org.reactivecouchbase:json-lib:1.0-SNAPSHOT'
+    compile 'org.reactivecouchbase:validation-lib:1.0-SNAPSHOT'
+    compile 'org.reactivecouchbase:concurrent-lib:1.0-SNAPSHOT'
     compile 'com.typesafe:config:1.3.0'
 
     testCompile 'junit:junit:4.12'
